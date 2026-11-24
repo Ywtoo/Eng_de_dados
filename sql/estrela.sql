@@ -1,0 +1,1 @@
+-- Esquema estrela da Parte 3 será definido aqui.

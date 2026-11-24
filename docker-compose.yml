@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: universidade
+      POSTGRES_USER: aluno
+      POSTGRES_PASSWORD: aluno_local
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./sql/universidade.sql:/docker-entrypoint-initdb.d/01-universidade.sql:ro
+
+  mongo:
+    image: mongo:7
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: aluno
+      MONGO_INITDB_ROOT_PASSWORD: aluno_local
+      MONGO_INITDB_DATABASE: universidade
+    ports:
+      - "27018:27017"

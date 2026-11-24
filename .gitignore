@@ -1,0 +1,19 @@
+# Cache Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# Senhas e endereços locais; compartilhar apenas o .env.example
+.env
+
+# Arquivos CSV baixados para o trabalho
+parte3_etl/csv/*
+!parte3_etl/csv/.gitkeep
+
+# Arquivos temporários e logs
+*.log
+*.tmp
+*.bak
+~$*
+# Projeto Apache Hop pode gerar estado local; versionar somente os artefatos do projeto necessários
+**/.metadata/
