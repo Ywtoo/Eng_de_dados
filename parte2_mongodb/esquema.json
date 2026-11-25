@@ -1,0 +1,376 @@
+{
+  "usuarios": {
+    "$jsonSchema": {
+      "bsonType": "object",
+      "required": ["cpf", "nome"],
+      "properties": {
+        "cpf": {
+          "bsonType": "string",
+          "maxLength": 13
+        },
+        "nome": {
+          "bsonType": "string",
+          "maxLength": 100
+        },
+        "data_nascimento": {
+          "bsonType": ["date", "null"]
+        },
+        "email": {
+          "bsonType": ["array", "null"],
+          "items": {
+            "bsonType": "string"
+          }
+        },
+        "telefone": {
+          "bsonType": ["array", "null"],
+          "items": {
+            "bsonType": "string"
+          }
+        },
+        "login": {
+          "bsonType": ["string", "null"],
+          "maxLength": 45
+        },
+        "senha": {
+          "bsonType": ["string", "null"],
+          "maxLength": 32
+        }
+      }
+    }
+  },
+  "professores": {
+    "$jsonSchema": {
+      "bsonType": "object",
+      "required": ["mat_professor"],
+      "properties": {
+        "mat_professor": {
+          "bsonType": "string",
+          "maxLength": 7
+        },
+        "cpf": {
+          "bsonType": ["string", "null"],
+          "maxLength": 13
+        },
+        "departamento": {
+          "bsonType": ["string", "null"],
+          "maxLength": 5
+        },
+        "formacao": {
+          "bsonType": ["string", "null"],
+          "enum": ["Graduação", "Especialização", "Mestrado", "Doutorado", null]
+        },
+        "data_admissao": {
+          "bsonType": ["date", "null"]
+        },
+        "tipo_jornada_trabalho": {
+          "bsonType": ["string", "null"],
+          "enum": ["20h", "40h", "DE", null]
+        },
+        "salario": {
+          "bsonType": ["double", "int", "long", "null"]
+        }
+      }
+    }
+  },
+  "departamentos": {
+    "$jsonSchema": {
+      "bsonType": "object",
+      "required": ["cod_depto", "nome"],
+      "properties": {
+        "cod_depto": {
+          "bsonType": "string",
+          "maxLength": 5
+        },
+        "nome": {
+          "bsonType": "string",
+          "maxLength": 50
+        },
+        "chefe": {
+          "bsonType": ["string", "null"],
+          "maxLength": 7
+        },
+        "orcamento": {
+          "bsonType": ["double", "int", "long", "null"],
+          "minimum": 0,
+          "exclusiveMinimum": true
+        },
+        "comissal": {
+          "bsonType": ["double", "int", "long", "null"]
+        }
+      }
+    }
+  },
+  "cursos": {
+    "$jsonSchema": {
+      "bsonType": "object",
+      "required": ["idcurso", "nome", "turno"],
+      "properties": {
+        "nome": {
+          "bsonType": "string",
+          "maxLength": 100
+        },
+        "grau": {
+          "bsonType": ["string", "null"],
+          "enum": ["Bacharelado", "Licenciatura Plena", null]
+        },
+        "turno": {
+          "bsonType": "string",
+          "enum": ["Matutino", "Vespertino", "Noturno", "Turno Indefinido"]
+        },
+        "campus": {
+          "bsonType": ["string", "null"],
+          "maxLength": 100
+        },
+        "nivel": {
+          "bsonType": ["string", "null"],
+          "enum": ["Graduação", "Mestrado", "Doutorado", "Lato", null]
+        },
+        "idcurso": {
+          "bsonType": ["int", "long"]
+        }
+      }
+    }
+  },
+  "estudantes": {
+    "$jsonSchema": {
+      "bsonType": "object",
+      "required": ["mat_estudante"],
+      "properties": {
+        "mat_estudante": {
+          "bsonType": "string",
+          "maxLength": 7
+        },
+        "cpf": {
+          "bsonType": ["string", "null"],
+          "maxLength": 13
+        },
+        "mc": {
+          "bsonType": ["double", "int", "long", "null"]
+        },
+        "ano_ingresso": {
+          "bsonType": ["int", "long", "null"]
+        }
+      }
+    }
+  },
+  "vinculos": {
+    "$jsonSchema": {
+      "bsonType": "object",
+      "required": ["idvinculo"],
+      "properties": {
+        "mat_estudante": {
+          "bsonType": ["string", "null"],
+          "maxLength": 7
+        },
+        "curso": {
+          "bsonType": ["int", "long", "null"]
+        },
+        "data_entrada": {
+          "bsonType": ["date", "null"]
+        },
+        "status": {
+          "bsonType": ["string", "null"],
+          "enum": ["Ativo", "Cancelada", "Formando", "Graduado", null]
+        },
+        "data_saida": {
+          "bsonType": ["date", "null"]
+        },
+        "idvinculo": {
+          "bsonType": ["int", "long"]
+        }
+      }
+    }
+  },
+  "projetos": {
+    "$jsonSchema": {
+      "bsonType": "object",
+      "required": ["id_projeto"],
+      "properties": {
+        "id_projeto": {
+          "bsonType": ["int", "long"]
+        },
+        "descricao": {
+          "bsonType": ["string", "null"]
+        }
+      }
+    }
+  },
+  "planos": {
+    "$jsonSchema": {
+      "bsonType": "object",
+      "required": ["mat_estudante", "ano"],
+      "properties": {
+        "id_projeto": {
+          "bsonType": ["int", "long", "null"]
+        },
+        "mat_professor": {
+          "bsonType": ["string", "null"],
+          "maxLength": 7
+        },
+        "mat_estudante": {
+          "bsonType": "string",
+          "maxLength": 7
+        },
+        "ano": {
+          "bsonType": ["int", "long"]
+        }
+      }
+    }
+  },
+  "disciplinas": {
+    "$jsonSchema": {
+      "bsonType": "object",
+      "required": ["cod_disc", "nome"],
+      "properties": {
+        "cod_disc": {
+          "bsonType": "string",
+          "maxLength": 8
+        },
+        "nome": {
+          "bsonType": "string",
+          "maxLength": 40
+        },
+        "pre_req": {
+          "bsonType": ["string", "null"],
+          "maxLength": 8
+        },
+        "creditos": {
+          "bsonType": ["int", "null"],
+          "minimum": 1,
+          "maximum": 12,
+          "exclusiveMaximum": true
+        },
+        "depto_responsavel": {
+          "bsonType": ["string", "null"],
+          "maxLength": 5
+        }
+      }
+    }
+  },
+  "semestres": {
+    "$jsonSchema": {
+      "bsonType": "object",
+      "required": ["ano", "semestre"],
+      "properties": {
+        "ano": {
+          "bsonType": "int"
+        },
+        "semestre": {
+          "bsonType": "int"
+        },
+        "data_inicio": {
+          "bsonType": ["date", "null"]
+        },
+        "data_fom": {
+          "bsonType": ["date", "null"]
+        }
+      }
+    }
+  },
+  "salas": {
+    "$jsonSchema": {
+      "bsonType": "object",
+      "required": ["id_sala"],
+      "properties": {
+        "id_sala": {
+          "bsonType": ["int", "long"]
+        },
+        "descricao": {
+          "bsonType": ["string", "null"]
+        }
+      }
+    }
+  },
+  "horarios": {
+    "$jsonSchema": {
+      "bsonType": "object",
+      "required": ["id_horario", "dia", "slot"],
+      "properties": {
+        "id_horario": {
+          "bsonType": ["int", "long"]
+        },
+        "dia": {
+          "bsonType": "string",
+          "maxLength": 15
+        },
+        "slot": {
+          "bsonType": "int"
+        }
+      }
+    }
+  },
+  "turmas": {
+    "$jsonSchema": {
+      "bsonType": "object",
+      "required": ["id_turma", "cod_disc"],
+      "properties": {
+        "id_turma": {
+          "bsonType": "int"
+        },
+        "cod_disc": {
+          "bsonType": "string",
+          "maxLength": 8
+        },
+        "numero": {
+          "bsonType": ["int", "null"]
+        },
+        "ano": {
+          "bsonType": ["int", "null"]
+        },
+        "semestre": {
+          "bsonType": ["int", "null"]
+        }
+      }
+    }
+  },
+  "lecionas": {
+    "$jsonSchema": {
+      "bsonType": "object",
+      "required": ["id_turma", "mat_professor"],
+      "properties": {
+        "id_turma": {
+          "bsonType": "int"
+        },
+        "mat_professor": {
+          "bsonType": "string",
+          "maxLength": 7
+        }
+      }
+    }
+  },
+  "alocacoes": {
+    "$jsonSchema": {
+      "bsonType": "object",
+      "required": ["id_turma", "id_horario"],
+      "properties": {
+        "id_turma": {
+          "bsonType": "int"
+        },
+        "id_horario": {
+          "bsonType": "int"
+        },
+        "id_sala": {
+          "bsonType": ["int", "null"]
+        }
+      }
+    }
+  },
+  "cursas": {
+    "$jsonSchema": {
+      "bsonType": "object",
+      "required": ["mat_estudante", "id_turma"],
+      "properties": {
+        "mat_estudante": {
+          "bsonType": "string",
+          "maxLength": 7
+        },
+        "id_turma": {
+          "bsonType": "int"
+        },
+        "nota": {
+          "bsonType": ["double", "int", "long", "null"]
+        }
+      }
+    }
+  }
+}
